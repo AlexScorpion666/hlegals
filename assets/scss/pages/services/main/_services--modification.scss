@@ -1,0 +1,13 @@
+@use "../../../presets" as *;
+@use "../../../mixins" as *;
+
+.services--modification {
+  padding-top: 188px;
+  padding-bottom: 50px;
+  margin-bottom: 58px;
+
+  @include md {
+    padding-top: 125px;
+    margin-bottom: 40px;
+  }
+}

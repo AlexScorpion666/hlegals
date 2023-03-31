@@ -1,0 +1,111 @@
+@use "../../../presets" as *;
+@use "../../../mixins" as *;
+
+.page-header {
+  position: relative;
+  background: $liner-gradient;
+  &__grid {
+    position: absolute;
+    z-index: 2;
+    right: 0;
+    left: 0;
+    display: grid;
+
+    @extend %container;
+    grid-template-columns: auto 1fr;
+
+    @include sm-min {
+      top: 50px;
+      gap: $gap-sm $gap;
+      grid-template-areas: "logo actions" "logo menu";
+    }
+
+    @include sm {
+      top: $gap;
+      align-items: center;
+      gap: $gap;
+      grid-template-areas: "actions actions" "logo menu";
+    }
+  }
+
+  &__logo {
+    grid-area: logo;
+  }
+
+  &__menu {
+    grid-area: menu;
+  }
+
+  &__actions {
+    grid-area: actions;
+  }
+
+  &__content {
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+
+    @include md-min {
+      &::before {
+        content: "";
+        background-image: url(../images/splash.svg);
+        background-repeat: no-repeat;
+        background-position: 50% 111%;
+
+        @include abs-position;
+      }
+    }
+
+    &::after {
+      z-index: 1;
+      content: "";
+      background: $liner-gradient2;
+
+      @include abs-position(calc(100% - 200px));
+    }
+
+    &-title {
+      position: absolute;
+      z-index: 1;
+      top: 50%;
+      left: 50%;
+      width: min(100% - $gap-xl, 620px);
+      margin: 0;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: $color-white;
+      font-size: 38px;
+      font-weight: 500;
+      line-height: 45px;
+    }
+
+    &-image {
+      position: absolute;
+      transform: translate(2px, 35%);
+
+      @media (min-height: 801px) {
+        height: 63vh;
+      }
+
+      @media (max-height: 800px) {
+        width: 600px;
+      }
+
+      @include xs {
+        transform: translate(10px, 34.5%);
+      }
+    }
+  }
+
+  &__button {
+    position: absolute;
+    z-index: 2;
+    bottom: $gap;
+    left: 50%;
+    cursor: pointer;
+    transform: translateX(-50%);
+  }
+}

@@ -1,0 +1,78 @@
+@use "../../../presets" as *;
+@use "../../../mixins" as *;
+
+.services-header {
+  position: relative;
+  &__grid {
+    position: absolute;
+    z-index: 2;
+    right: 0;
+    left: 0;
+    display: grid;
+
+    @extend %container;
+    grid-template-columns: auto 1fr;
+
+    @include md-min {
+      top: 50px;
+      gap: $gap-sm $gap;
+      grid-template-areas: "logo actions" "logo menu";
+    }
+
+    @include md{
+      top: $gap;
+      align-items: center;
+      gap: $gap;
+      grid-template-areas: "actions actions" "logo menu";
+    }
+  }
+
+  &__logo {
+    grid-area: logo;
+    display: flex;
+
+    &-image {
+      height: 62px;
+      width: 155px;
+
+      @include md {
+        height: 31px;
+        width: auto;
+      }
+    }
+
+    &-slash {
+      height: 47px;
+
+      @include md {
+        height: 24px;
+      }
+    }
+
+    &-emblem {
+      height: 47px;
+
+      @include md {
+        height: 24px;
+      }
+    }
+
+    &-title {
+      font-size: 38px;
+      color: $color-white;
+      margin: 0;
+
+      @include md {
+        font-size: 19px;
+      }
+    }
+  }
+
+  &__menu {
+    grid-area: menu;
+  }
+
+  &__actions {
+    grid-area: actions;
+  }
+}

@@ -1,0 +1,124 @@
+@use "../../../../presets" as *;
+@use "../../../../mixins" as *;
+
+$size: 16px;
+
+.team {
+  margin-top: 60px;
+
+  @extend %container;
+
+  &__item {
+    display: flex;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    background: $color-gray-bg;
+    gap: 40px;
+
+    @include lg {
+      flex-direction: column;
+      padding: 20px;
+    }
+
+    &-image {
+      height: 100%;
+    }
+
+    &-picture {
+      @include lg {
+        display: none;
+      }
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+
+    @include lg-min {
+      padding-top: 40px;
+
+      &-imgsm {
+        display: none;
+      }
+    }
+
+    @include lg {
+      margin-top: 0;
+    }
+
+    &-description {
+      padding-bottom: 20px;
+      font-size: 42px;
+      font-weight: 700;
+      line-height: 50px;
+      max-width: 780px;
+      padding-bottom: 20px;
+      @include text-liner-gradient(true);
+
+      @include lg {
+        padding-bottom: 10px;
+        font-size: 32px;
+        line-height: 38px;
+      }
+    }
+
+    &-name {
+      padding-bottom: 5px;
+      color: $color-gray-bg-text;
+      font-size: 18px;
+      font-weight: 400;
+      line-height: 21px;
+    }
+
+    &-position {
+      color: $color-gray-bg-text;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 22px;
+    }
+
+    &-worker {
+      @include lg {
+        display: flex;
+        align-items: center;
+        gap: $gap-sm;
+      }
+    }
+  }
+
+  &__content-link {
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: $color-active;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 17px;
+
+    &__img {
+      position: relative;
+      top: 0.9px;
+      left: 5px;
+    }
+  }
+
+  .slider {
+    &__indicators-team {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+    }
+
+    &__indicator-team {
+      width: $size;
+      height: $size;
+      opacity: 0.2;
+      border-radius: $size * 0.5;
+      background-color: $color-active;
+
+      &.active {
+        opacity: 1;
+      }
+    }
+  }
+}
